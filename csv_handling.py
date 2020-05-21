@@ -19,7 +19,7 @@ def append_columns(action , document, candidate_set):
         idx = candidate_set.index(action)
         writer.writerow([''] * (idx) + [document])
 
-append_columns('orange' , 'heyu', candidate_set)
+
 
 #function  to find document frequency
 def find_freq(keyword):

@@ -1,6 +1,7 @@
 #Handle csv's used
 from config import *
 import pandas as pd
+import pandas as pd
 import csv
 import re
 
@@ -20,7 +21,6 @@ def append_columns(action , document, candidate_set):
         writer.writerow([''] * (idx) + [document])
 
 
-
 #function  to find document frequency
 def find_freq(keyword):
     df = 0
@@ -38,4 +38,29 @@ def find_freq(keyword):
                 df = df + 1
 
     return df
+
+def update(new_action):
+
+    csvfile = 'action_document.csv'
+    info = []
+    with open(csvfile , 'r') as csv_file:
+        reader = csv.reader(csv_file , delimiter = ',')
+        iter = 0
+        for element in reader:
+            if iter == 0:
+                iter = iter + 1
+                element.append(new_action)
+            info.append(element)
+    print(info)
+    writer = csv.writer(open(csvfile , 'w' , newline = "") , delimiter = ',')
+    for element in info:
+        writer.writerow(element)
+
+        
+            
+            
+        
+        
+update('peacheee')
+
 

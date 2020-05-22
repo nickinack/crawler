@@ -19,11 +19,9 @@ def append_columns(action , document, candidate_set):
         writer = csv.writer(csv_file)
         idx = candidate_set.index(action)
         writer.writerow([''] * (idx) + [document])
-
-
 #function  to find document frequency
 def find_freq(keyword):
-    df = 0
+    df_s = 0
     csvfile = 'action_document.csv'
     iter = 0
     with open(csvfile) as csv_file:
@@ -35,12 +33,25 @@ def find_freq(keyword):
             document = document.split()
             print(document)
             if keyword in document:
-                df = df + 1
+                df_s = df_s + 1
 
-    return df
+    return df_s
 
 def update(new_action):
-
+    global candidate_set
+    candidate_set.append(new_action)
+    global initial_size
+    initial_size = initial_size + 1
+    global df
+    df.append(0)
+    global reward
+    reward.append(0)
+    global q_table
+    q_table.append(0)
+    global r
+    r.append(0)
+    global records_st
+    records_st.append(0)
     csvfile = 'action_document.csv'
     info = []
     with open(csvfile , 'r') as csv_file:
@@ -56,11 +67,8 @@ def update(new_action):
     for element in info:
         writer.writerow(element)
 
-        
+
             
-            
         
-        
-update('peacheee')
 
 

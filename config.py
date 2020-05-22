@@ -14,8 +14,8 @@ global df
 df = list(np.zeros(initial_size))   #document frequency
 global n_iter
 n_iter = 1  #number of iterations
-global domain_size
-domain_size = 0 #number of expected documents
+global D
+D = 0 #number of expected documents
 global reward
 reward =list(np.zeros(initial_size)) #reward for a (state,action) pair ; can be updated inside the loop
 global q_table

@@ -22,6 +22,6 @@ global q_table
 q_table = list(np.zeros((initial_size))) #q_table
 global r
 r = list(np.zeros(initial_size)) #Represents the number of documents acquired at the state st
-global records_st
-records_st = list(np.zeros((initial_size))) #Represents the total number of records collected till the present state
+global total_records
+total_records = 0
 

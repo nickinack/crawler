@@ -8,7 +8,9 @@ def calc_reward(df , r, D):
     rew = (np.absolute(r) - df)/D
     return rew
 
-def calc_q(action,r, state, total_records,reward,D,candidate_set,df):
+
+
+def calc_q(action,r,total_record_input,reward,D,candidate_set,df):
     index = candidate_set.index(action)
     q_value = reward[index]
     value = 0 #Formula application
@@ -18,7 +20,7 @@ def calc_q(action,r, state, total_records,reward,D,candidate_set,df):
             idx = candidate_set.index(element)
             value = reward[idx]
             value = value + (df[idx]/D)
-            value = value - ((total_records * r[element])/(D**2))
+            value = value - ((total_records_input * r[element])/(D**2))
             if value > maxi:
                 value = maxi
 
@@ -26,6 +28,8 @@ def calc_q(action,r, state, total_records,reward,D,candidate_set,df):
     return q_value
 
 def calc_r(output_list):
+    global total_records
+    total_records = total_records + len(output_list)
     return len(output_list)
 
 
